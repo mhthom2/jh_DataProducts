@@ -1,0 +1,82 @@
+---
+title: "Black Cherry Tree Timber Predictions"
+author: "Matthew Thomas"
+date: "`r Sys.Date()`"
+output: ioslides_presentation
+---
+```{r, echo=FALSE}
+knitr::include_graphics('./CherryTree2.jpg')
+
+# https://rpubs.com/mhthom2/cherry_tree_presentation
+
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Value of Black Cherry Trees
+
+Demand for the lumber of black cherry trees is in incredibly high demand globally. 
+The reddish-pink color of the wood gives it a stunning appearance for 
+a wide array of wood products. Moreover, it is an easily-workable wood that is 
+highly desired by woodworkers.  
+
+Despite its desirability, cherry is a relatively rare species in U.S. forests, 
+accounting for only 0.3% of commercial timber volume. 
+
+This combination for high demand and low supply make black cherry trees 
+worth more than most other species. Generally rated as the fourth most valuable 
+timber species in the U.S., prices for black cherry lumber range from about 
+$3,333 to $10,000 per cubic foot. 
+
+```{r}
+suppressMessages({
+        suppressWarnings(
+        {
+                library(plotly)
+                data(trees)
+        })
+})
+```
+
+## Black Cherry Tree Data
+
+Using the girth, which is the diameter of the tree at the height of 4 ft 6 inches,
+and height of the trees, we'd like to predict the amount of timber a given tree 
+will produce. 
+
+```{r cars, echo=TRUE}
+summary(trees)
+```
+
+## Plot of Black Cherry Tree Data
+
+```{r pressure}
+plot_ly(trees, x=~Girth, y=~Height, z=~Volume, 
+        type='scatter3d', mode='markers', 
+        color=~Volume, name='Tree Data')
+```
+
+Because of the apparent linear relationship of the features, our application 
+uses a simple linear regression to predict the volume using the girth and 
+height of the trees. 
+
+## Cherry Tree Timber Prediction 
+
+To help land owners calculate the potential value of their cherry trees, 
+we've created an application that estimates the volume of timber a given tree
+will produce in cubic feet, given the tree's girth and height. 
+
+The girth of the trees is easy to measure using a common tape measure, and 
+with a yardstick and some simple trigonometry, the height is also simple to calculate.
+
+Currently, timber volumes are estimated using complicated tables. The tables are
+difficult to use, and their estimates can vary widely.
+
+Our application has the potential of saving land owners time and will provide 
+them with more accurate estimates of the volume of their timber. 
+
+## Reference 
+
+- Lowry, Z. (2023, July 15). How much are Black Cherry Trees Worth?. The Timberland Investor. https://thetimberlandinvestor.com/how-much-are-black-cherry-trees-worth/#what-makes-black-cherry-such-a-valuable-species 
